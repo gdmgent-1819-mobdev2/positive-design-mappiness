@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import SignIn from 'components/Signin.js';
 import * as firebase from 'firebase';
 
 var config = {
@@ -13,6 +12,7 @@ var config = {
 };
 
 firebase.initializeApp(config);
+
 export default class App extends React.Component {
   render() {
     return (
