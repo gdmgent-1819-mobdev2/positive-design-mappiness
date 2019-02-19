@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-
+import SignIn from 'components/Signin.js';
 import * as firebase from 'firebase';
 
 var config = {
@@ -16,11 +16,14 @@ firebase.initializeApp(config);
 export default class App extends React.Component {
   render() {
     return (
+      <div>
+       
         <View style={{flex: 3, flexDirection: 'row', alignItems: 'stretch', justifyContent: 'center', height: '100%'}}>
           <View style={{flex: 1, height: '50%', backgroundColor: 'powderblue'}} />
           <View style={{flex: 1, height: 50, backgroundColor: 'skyblue'}} />
           <View style={{flex: 1, height: 50, backgroundColor: 'steelblue'}} />
         </View>
+      </div>
     );
   }
 }
