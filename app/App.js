@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import * as firebase from 'firebase';
 
-var config = {
+const config = {
   apiKey: "AIzaSyBgLNAtnnYME9U5kkT006jc5yEY7Em53bA",
   authDomain: "mappines-975ab.firebaseapp.com",
   databaseURL: "https://mappines-975ab.firebaseio.com",
@@ -12,6 +12,18 @@ var config = {
 };
 
 firebase.initializeApp(config);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logoSplash: {
+    flex: 1,
+  }
+});
 
 export default class App extends React.Component {
   render() {
@@ -27,16 +39,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logoSplash: {
-    flex: 1,
-  }
-});
-
