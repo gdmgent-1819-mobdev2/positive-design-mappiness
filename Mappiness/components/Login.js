@@ -11,7 +11,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <LinearGradient colors={ primaryGradientArray } style={styles.container}>
-   
+        <Text style={styles.title}>Dit word de Login!!!!</Text>
       </LinearGradient>
     );
   }
