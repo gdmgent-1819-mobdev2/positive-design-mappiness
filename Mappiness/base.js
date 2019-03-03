@@ -10,3 +10,34 @@ const config = {
 }
 firebase.initializeApp(config);
 export default firebase;
+
+
+// let userRef = firebase.database().ref('Users').push(this.userObject);
+
+//userObject will exist of user Name LastName Age and Adress
+
+// let userRef = firebase.database().ref('Emotion').push(this.emotionObject);
+
+//emotionObject will exist of userId and clicked emotion
+
+//firebase.auth().signInWithEmailAndPassword(email, password) // checks if user is in the database
+
+
+// let userFriendRef = firebase.database().ref('Friends').push(this.friendObject);
+//friendObject will exist of userId and friends name , username , age and status
+
+
+// let userRef = firebase.database().ref('lastLocation').push(personObject);
+
+//personObject will exist of userId, Name, LastName and lastknow location
+
+/*  
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        currentUser = user.email;
+    }
+});
+
+id = firebase.auth().currentUser.uuid //Gives currentuser id as reference for the achievements display
+let achievementRef = firebase.database().ref('Achievements).push(achievement)
+*/
