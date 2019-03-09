@@ -31,10 +31,15 @@ export default class HomeScreen extends React.Component {
       let region = {
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
+
         latitudeDelta: 0.45,
         longitudeDelta: 0.45,
       }
       this.setState({region: region})
+      this.setState({loc: {
+        latitude: region.latitude,
+        longitude: region.longitude,
+        }})
     }
 
     render() {
@@ -47,10 +52,7 @@ export default class HomeScreen extends React.Component {
           style={{flex: 1}}
         >
           <MapView.Marker
-              coordinate={{
-                latitude: 122.4194,
-                longitude: 37.7749,
-              }}
+              coordinate={this.state.loc}
           />
         </MapView>
       );
