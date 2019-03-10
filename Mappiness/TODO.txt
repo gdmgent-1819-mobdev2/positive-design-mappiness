@@ -6,4 +6,13 @@ TODO styling of markers (icons)
 TODO ...
 
 #Loginscreen
-TODO ...
+TODO firebase auth
+TODO check if online to switch to mapscreen
+
+#Registerscreen
+TODO put user object with info in firebase
+
+#Profilepage
+TODO show current user info
+
+
