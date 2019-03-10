@@ -18,6 +18,7 @@ export default class LoginScreen extends React.Component {
         return (
             <React.Fragment>
                 <Login/>
+                <Button title="SignUp" onPress={() => this.props.navigation.navigate('Signup')} />
                 <Button title="Go to map" onPress={() => this.props.navigation.navigate('Home')}/>
             </React.Fragment>
         );

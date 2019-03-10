@@ -17,6 +17,7 @@ export default class SignUpScreen extends React.Component {
     }
 
     onSignUpPress = () => {
+        /*
         if(this.state.password !== this.state.passwordConfirm) {
             Alert.alert("Passwords do not match!")  
             return;
@@ -31,29 +32,17 @@ export default class SignUpScreen extends React.Component {
             Alert.alert("First & Last Name!")
             return;
         }
-
+        */
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .then(() => { 
-            //firebase.auth().currentUser.updatePhoneNumber({
-                //phoneCredential: parseInt(this.state.phoneNumber)
-                //reauthenticate(AuthCredential)
-            //})           <==== this has to be done in profile settings after authenticating the user
-            firebase.auth().currentUser.updateProfile({
-                displayName: this.state.firstName+' '+this.state.lastName,
-                photoURL: ""
-              }).then(function() {
-                console.log("Profile updated successfully!");
-                var displayName = firebase.auth().currentUser.displayName;
-                // "https://example.com/jane-q-user/profile.jpg"
-                var photoURL = firebase.auth().currentUser.photoURL;
-              }, function(error) {
-                // An error happened.
-                Alert.alert(error.message);
-              });
-
-        }, (error) => {
-            Alert.alert(error.message);
-        });
+        .then(() =>{
+            userobject = {
+                Naam: this.state.firstName,
+                FamilieNaam: this.state.lastName,
+                Email: this.state.Email,
+                Tel: this.state.phoneNumber,
+            }
+            firebase.auth().ref('user').push(userobject);
+        })
     }
 
     onBackToLoginPress = () => {
@@ -139,3 +128,29 @@ export default class SignUpScreen extends React.Component {
 const styles = StyleSheet.create({
 
 });
+
+
+/*
+        .then(() => { 
+            //firebase.auth().currentUser.updatePhoneNumber({
+                //phoneCredential: parseInt(this.state.phoneNumber)
+                //reauthenticate(AuthCredential)
+            //})           <==== this has to be done in profile settings after authenticating the user
+
+            firebase.auth().currentUser.updateProfile({
+                displayName: this.state.firstName+' '+this.state.lastName,
+                photoURL: ""
+              }).then(function() {
+                console.log("Profile updated successfully!");
+                var displayName = firebase.auth().currentUser.displayName;
+                // "https://example.com/jane-q-user/profile.jpg"
+                var photoURL = firebase.auth().currentUser.photoURL;
+              }, function(error) {
+                // An error happened.
+                Alert.alert(error.message);
+              });
+
+        }
+
+
+*/

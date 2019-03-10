@@ -47,7 +47,6 @@ export default class Login extends React.Component {
         style={styles.input}
         onPress={this.onLogin.bind(this)}
       />
-      <Text style={styles.title}>Create Account</Text>
       </LinearGradient>
     );
   }
