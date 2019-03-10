@@ -7,7 +7,7 @@ TODO ...
 
 #Loginscreen
 TODO firebase auth
-TODO check if online to switch to mapscreen
+TODO check if online to switch to mapscreen (for Jonas?)
 
 #Registerscreen
 TODO put user object with info in firebase
