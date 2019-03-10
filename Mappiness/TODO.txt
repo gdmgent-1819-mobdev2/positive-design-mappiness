@@ -1,0 +1,9 @@
+Mappiness to do list
+
+#Mapscreen
+TODO other users' markers
+TODO styling of markers (icons)
+TODO ...
+
+#Loginscreen
+TODO ...
