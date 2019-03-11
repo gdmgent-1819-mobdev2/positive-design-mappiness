@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo';
 
 import Firebase from '../base';
 import { MapView, Permissions, Location } from 'expo';
+const MarkerImg = require('../assets/images/markertest.jpg');
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -52,6 +53,8 @@ export default class HomeScreen extends React.Component {
           style={{flex: 1}}
         >
           <MapView.Marker
+              //image={MarkerImg}
+              style={styles.mark}
               coordinate={this.state.loc}
           />
         </MapView>
@@ -69,5 +72,8 @@ export default class HomeScreen extends React.Component {
     title: {
       color: '#fff',
     },
+    mark: {
+
+    }
   });
   
