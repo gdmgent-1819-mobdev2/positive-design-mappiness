@@ -12,10 +12,6 @@ firebase.initializeApp(config);
 export default firebase;
 
 
-// let userRef = firebase.database().ref('Users').push(this.userObject);
-
-//userObject will exist of user Name LastName Age and Adress
-
 // let userRef = firebase.database().ref('Emotion').push(this.emotionObject);
 
 //emotionObject will exist of userId and clicked emotion

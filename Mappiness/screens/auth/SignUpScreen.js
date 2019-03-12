@@ -15,7 +15,13 @@ export default class SignUpScreen extends React.Component {
             phoneNumber: "",
          };
     }
-
+    _storeData = async () => {
+        try {
+            await AsyncStorage.setItem('loggedin', true);
+        } catch (error) {
+          // Error saving data
+        }
+      };
     onSignUpPress = () => {
         /*
         if(this.state.password !== this.state.passwordConfirm) {
@@ -41,11 +47,7 @@ export default class SignUpScreen extends React.Component {
             Tel: this.state.phoneNumber,
         }
         firebase.database().ref('user').push(this.userobject);
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-              const userid = firebase.auth().currentUser.uid;
-            }
-        })
+        this._storeData();
         this.props.navigation.navigate("Home");
     }
 

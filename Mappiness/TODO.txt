@@ -6,11 +6,13 @@ TODO styling of markers (icons)
 TODO ...
 
 #Loginscreen
-TODO firebase auth
-TODO check if online to switch to mapscreen (for Jonas?)
+DONE firebase auth
+TODO check if online to switch to mapscreen (for Jonas?) -> async functions written check is needed
 
 #Registerscreen
-TODO put user object with info in firebase
+DONE add user on register
+DONE put user object with info in firebase 
+TODO parse currentUsers id
 
 #Profilepage
 TODO show current user info

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet,Text,View,TextInput,Button,TouchableHighlight,Image,Alert} from 'react-native';
 import { LinearGradient } from 'expo';
-import Logo from '../assets/images/logo.png';
+import * as firebase from 'firebase';
 
 
 export const red = '#DD5630'
@@ -18,11 +18,32 @@ export default class Login extends React.Component {
       password: '',
     };
   }
-
+  _storeData = async () => {
+    try {
+        await AsyncStorage.setItem('loggedin', true);
+    } catch (error) {
+      // Error saving data
+    }
+  };
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('loggedin');
+      if (value !== null) {
+        // We have data!!
+        Alert.alert(value)
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
   onLogin() {
-    const { username, password } = this.state;
-
-    Alert.alert(`${username} and ${password}`);
+    const username = this.state.username
+    const password = this.state.password
+    firebase.auth().signInWithEmailAndPassword(username, password)
+    this._storeData();
+    this._retrieveData();
+    Alert.alert('succes')
+    this.props.navigation.navigate("Home");
   }
   
   render() {
