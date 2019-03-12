@@ -47,7 +47,6 @@ export default class SignUpScreen extends React.Component {
             Tel: this.state.phoneNumber,
         }
         firebase.database().ref('user').push(this.userobject);
-        this._storeData();
         this.props.navigation.navigate("Home");
     }
 

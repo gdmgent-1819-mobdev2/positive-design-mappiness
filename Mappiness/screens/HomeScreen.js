@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, FlatList, ActivityIndicator } from 'react-native';
-
+import { StyleSheet, Text, View, FlatList, ActivityIndicator, Alert } from 'react-native';
+import * as firebase from 'firebase';
 import { LinearGradient } from 'expo';
 
 import Firebase from '../base';
