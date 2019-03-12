@@ -37,7 +37,16 @@ export default class LoginScreen extends React.Component {
         const username = this.state.username
         const password = this.state.password
         firebase.auth().signInWithEmailAndPassword(username, password)
-        this.props.navigation.navigate("Home");
+        .then(()=>{
+            this.props.navigation.navigate("Home");
+        })
+        .catch((error) => {
+            // Handle Errors here.
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              // show errors in console
+              Alert.alert(errorMessage + errorCode);
+         });
       }
       
     render() {
@@ -66,6 +75,7 @@ export default class LoginScreen extends React.Component {
                     />
                 </LinearGradient>
                 <Button title="SignUp" onPress={() => this.props.navigation.navigate('Signup')} />
+                <Button title="Go to profile" onPress={() => this.props.navigation.navigate('Profile')}/>
                 <Button title="Go to map" onPress={() => this.props.navigation.navigate('Home')}/>
             </React.Fragment>
         );
