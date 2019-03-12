@@ -1,10 +1,24 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, FlatList, ActivityIndicator,TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button, Alert,TouchableHighlight } from 'react-native';
+import * as firebase from 'firebase';
 import { Avatar } from 'react-native-elements';
 export default class ProfileScreen extends React.Component {
     static navigationOptions = {
         title: 'Profiel',
     };
+
+    constructor(props) {
+      super(props);
+      
+      this.state = {
+        username: '',
+        password: '',
+      };
+    }
+    test = () => {
+      const uid = firebase.auth().currentUser.uid
+      Alert.alert(uid)
+    }
 
     render() {
       return (
@@ -27,6 +41,9 @@ export default class ProfileScreen extends React.Component {
                 LOGOUT
             </Text>
           </TouchableHighlight>
+          </View>
+          <View>
+            <Button title="Push me" onPress={this.test} />
           </View>
         </View>
       );
