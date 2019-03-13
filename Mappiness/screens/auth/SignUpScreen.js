@@ -39,15 +39,21 @@ export default class SignUpScreen extends React.Component {
             return;
         }
         */
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
-        this.userobject = {
-            Naam: this.state.firstName,
-            FamilieNaam: this.state.lastName,
-            Email: this.state.email,
-            Tel: this.state.phoneNumber,
-        }
-        firebase.database().ref('user').push(this.userobject);
-        this.props.navigation.navigate("Home");
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then(() => {
+            const Naam =  this.state.firstName;
+            const FamilieNaam =  this.state.lastName;
+            const Email =  this.state.email;
+            const Tel =  this.state.phoneNumber;
+            const userid = firebase.auth().currentUser.uid;
+            firebase.database().ref().child('Users').child(userid).set({
+                Naam,
+                FamilieNaam,
+                Email,
+                Tel
+            });
+            this.props.navigation.navigate("Home");
+        });
     }
 
     onBackToLoginPress = () => {

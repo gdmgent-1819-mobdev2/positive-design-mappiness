@@ -15,9 +15,16 @@ export default class ProfileScreen extends React.Component {
         password: '',
       };
     }
-    test = () => {
+    getId = () => {
       const uid = firebase.auth().currentUser.uid
       Alert.alert(uid)
+    }
+    logout = () => {
+      firebase.auth().signOut();
+      Alert.alert('uitgelogd');
+      this.props.navigation.navigate("Login");
+
+
     }
  
     render() {
@@ -37,13 +44,11 @@ export default class ProfileScreen extends React.Component {
             </Text>
           </TouchableHighlight>
           <TouchableHighlight  style={styles.button} activeOpacity={1}>
-            <Text style={styles.textButton}>
-                LOGOUT
-            </Text>
+            <Button style={styles.button} title="Logout" onPress={this.logout} />
           </TouchableHighlight>
           </View>
           <View>
-            <Button title="Push me" onPress={this.test} />
+            <Button style={styles.button} title="Push me" onPress={this.getId} />
           </View>
         </View>
       );
