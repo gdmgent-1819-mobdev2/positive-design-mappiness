@@ -46,7 +46,7 @@ export default class SignUpScreen extends React.Component {
             const Email =  this.state.email;
             const Tel =  this.state.phoneNumber;
             const userid = firebase.auth().currentUser.uid;
-            firebase.database().ref().child('Users').child(userid).set({
+            firebase.database().ref().child('users').child(userid).set({
                 Naam,
                 FamilieNaam,
                 Email,
