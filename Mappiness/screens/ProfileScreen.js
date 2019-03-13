@@ -19,7 +19,7 @@ export default class ProfileScreen extends React.Component {
       const uid = firebase.auth().currentUser.uid
       Alert.alert(uid)
     }
-
+ 
     render() {
       return (
         <View style={styles.container}>
