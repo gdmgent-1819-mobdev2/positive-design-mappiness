@@ -57,7 +57,7 @@ export default class HomeScreen extends React.Component {
           <MapView.Marker
               image={EmojiHappy}
               style={{
-                  width: 40
+                  width: '10%'
               }}
               coordinate={this.state.loc}
           />
