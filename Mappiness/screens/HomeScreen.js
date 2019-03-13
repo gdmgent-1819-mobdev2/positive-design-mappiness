@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, FlatList, ActivityIndicator, Alert } from 'react-native';
+import { StyleSheet, Text, View, FlatList, ActivityIndicator, Alert, Image } from 'react-native';
 import * as firebase from 'firebase';
 import { LinearGradient } from 'expo';
 
@@ -33,8 +33,8 @@ export default class HomeScreen extends React.Component {
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
 
-        latitudeDelta: 0.45,
-        longitudeDelta: 0.45,
+        latitudeDelta: 0.05,
+        longitudeDelta: 0.05,
       }
       this.setState({region: region})
       this.setState({loc: {
@@ -54,13 +54,17 @@ export default class HomeScreen extends React.Component {
           rotateEnabled={true}
           style={{flex: 1}}
         >
-          <MapView.Marker
-              image={EmojiHappy}
-              style={{
-                  width: '10%'
-              }}
-              coordinate={this.state.loc}
-          />
+
+            <MapView.Marker coordinate={this.state.loc} >
+                <Image
+                    source={EmojiHappy}
+                    style={{
+                        width: 45,
+                        height: 45,
+                    }}
+                />
+            </MapView.Marker>
+
         </MapView>
       );
     }
