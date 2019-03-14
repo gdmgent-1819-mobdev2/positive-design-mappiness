@@ -106,10 +106,18 @@ const styles = StyleSheet.create({
       borderRadius: 10
     },
     login:{
-      color: 'white'
+      color: 'white',
+      fontWeight: "bold"
     },
     loginButton:
     {
       marginTop: 40,
+      borderWidth: 2,
+      borderColor: "#FFF",
+      width: 100,
+      height: 40,
+      borderRadius: 8,
+      justifyContent: 'center',
+      alignItems: 'center',
     }
   });
