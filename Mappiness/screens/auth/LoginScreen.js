@@ -89,7 +89,6 @@ export default class LoginScreen extends React.Component {
                          Geen account? Klik hier!
                       </Text>
                 </LinearGradient>
-                <Button title="SignUp" onPress={() => this.props.navigation.navigate('Signup')} />
                 <Button title="Go to profile" onPress={() => this.props.navigation.navigate('Profile')}/>
                 <Button title="Go to map" onPress={() => this.props.navigation.navigate('Home')}/>
             </React.Fragment>
