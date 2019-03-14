@@ -5,6 +5,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { LinearGradient } from 'expo';
 export const red = '#FFE308'
 export const yellow = '#FFA700'
+const EmojiHappy = require('../../assets/images/logo.png');
 export const primaryGradientArray = [red, yellow]
 export default class LoginScreen extends React.Component {   
       constructor(props) {
@@ -54,6 +55,14 @@ export default class LoginScreen extends React.Component {
         return (
             <React.Fragment>
                 <LinearGradient colors={ primaryGradientArray } style={styles.container}>
+                    <Image
+                        source={EmojiHappy}
+                        style={{
+                            width: 200,
+                            height: 200,
+                            marginBottom: 50,
+                        }}
+                    />
                     <TextInput
                         value={this.state.username}
                         onChangeText={(username) => this.setState({ username })}
