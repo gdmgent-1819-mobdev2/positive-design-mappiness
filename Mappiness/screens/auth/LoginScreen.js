@@ -85,6 +85,9 @@ export default class LoginScreen extends React.Component {
                             Login
                         </Text>
                       </TouchableHighlight>
+                      <Text style={{color:'white',marginTop: 25}} onPress={() => this.props.navigation.navigate('Signup')}>
+                         Geen account? Klik hier!
+                      </Text>
                 </LinearGradient>
                 <Button title="SignUp" onPress={() => this.props.navigation.navigate('Signup')} />
                 <Button title="Go to profile" onPress={() => this.props.navigation.navigate('Profile')}/>

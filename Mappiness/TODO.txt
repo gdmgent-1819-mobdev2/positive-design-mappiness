@@ -6,11 +6,11 @@ TODO styling of markers (icons)
 TODO Marker click => meet or chat option field
 TODO Slider with emotion => via react native elements components!
 
-#Loginscreen
+#Loginscreen STYLING DONE
 DONE firebase auth
 TODO check if online to switch to mapscreen (for Jonas?) -> async functions written check is needed
 
-#Registerscreen
+#Registerscreen STYLING DONE
 DONE add user on register
 DONE put user object with info in firebase 
 TODO parse currentUsers id
