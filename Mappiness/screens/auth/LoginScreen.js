@@ -3,8 +3,8 @@ import {StyleSheet,Text,View,TextInput,Button,TouchableHighlight,Image,Alert} fr
 import * as firebase from 'firebase';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { LinearGradient } from 'expo';
-export const red = '#DD5630'
-export const yellow = '#FFAB00'
+export const red = '#FFE308'
+export const yellow = '#FFA700'
 export const primaryGradientArray = [red, yellow]
 export default class LoginScreen extends React.Component {   
       constructor(props) {
@@ -68,11 +68,11 @@ export default class LoginScreen extends React.Component {
                         style={styles.input}
                     />
                     <Text style={styles.title}>Forgot Password?</Text>
-                    <Button
-                        title={'Login'}
-                        style={styles.input}
-                        onPress={this.onLogin.bind(this)}
-                    />
+                      <TouchableHighlight  style={styles.loginButton} onPress={this.onLogin.bind(this)} activeOpacity={1}>
+                        <Text style={styles.login}>
+                            Login
+                        </Text>
+                      </TouchableHighlight>
                 </LinearGradient>
                 <Button title="SignUp" onPress={() => this.props.navigation.navigate('Signup')} />
                 <Button title="Go to profile" onPress={() => this.props.navigation.navigate('Profile')}/>
@@ -91,15 +91,25 @@ const styles = StyleSheet.create({
     },
     title: {
       color: '#fff',
+      textAlign: 'right',
+      alignSelf: 'stretch',
+      marginRight: 40,
     },
     input: {
       width: 300,
       height: 44,
       padding: 10,
       borderWidth: 1,
-      borderColor: 'black',
+      borderColor: 'gray',
       marginBottom: 10,
       backgroundColor: '#fff',
       borderRadius: 10
     },
+    login:{
+      color: 'white'
+    },
+    loginButton:
+    {
+      marginTop: 40,
+    }
   });
