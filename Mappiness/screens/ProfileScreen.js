@@ -40,7 +40,7 @@ export default class ProfileScreen extends React.Component {
         <View style={styles.container}>
           <Avatar
             rounded
-            source={{uri: "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"}}
+            source={{uri: "https://pbs.twimg.com/profile_images/814534536830795776/CO84uTK8_400x400.jpg"}}
             onPress={() => console.log("Works!")}
             activeOpacity={0.2}
             size={120}
@@ -79,7 +79,7 @@ export default class ProfileScreen extends React.Component {
                 <View style={{flex: 3,marginLeft:30}}>
                     <Text style={[styles.profileInfo , styles.border]}>Verder lopen in achtergrond</Text>
                     <Text style={[styles.profileInfo , styles.border]}>Verberg Naam</Text>
-                    <Text style={[styles.profileInfo , styles.border]}>Update wanneer de app is gesloten</Text>
+                    <Text style={[styles.profileInfo , styles.border]}>Update bij gesloten app</Text>
                 </View>
                 <View style={{flex: 1}}>
                   
@@ -94,6 +94,9 @@ export default class ProfileScreen extends React.Component {
                 
                   </View>
             </View>
+            <View>
+            <Text>dkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkekjbfkezjbfzebfjhezbzekhjbg</Text>
+            </View>
         </View>
       );
     }
@@ -101,7 +104,6 @@ export default class ProfileScreen extends React.Component {
 
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
       paddingTop: 30
@@ -137,7 +139,7 @@ export default class ProfileScreen extends React.Component {
     },
     buttonSwitch:
     {
-      marginTop: 30,
+      marginTop: 25,
     }
   });
   

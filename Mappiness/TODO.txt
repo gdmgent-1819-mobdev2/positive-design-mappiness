@@ -19,12 +19,12 @@ TODO parse currentUsers id
 DONE avatar
 DONE Edit / logout button (styling) 
 TODO show current user info
-TODO Run in background
+TODO Medals
 
------- SETTINGS-----
+------ SETTINGS----- STYLING DONE
 TODO Hide Name
 TODO Update location when app is closed
-TODO Medals
+TODO Run in background
 
 #Chatscreen
 TODO Persons list + distance
