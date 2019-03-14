@@ -63,6 +63,9 @@ export default class LoginScreen extends React.Component {
                             marginBottom: 50,
                         }}
                     />
+                    <View>
+                      <Text style={{fontSize: 30,marginBottom: 40,color: 'white',fontWeight: 'bold'}}>Mappiness</Text>
+                    </View>
                     <TextInput
                         value={this.state.username}
                         onChangeText={(username) => this.setState({ username })}
