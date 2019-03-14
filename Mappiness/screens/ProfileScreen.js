@@ -35,8 +35,11 @@ export default class ProfileScreen extends React.Component {
             source={{uri: "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"}}
             onPress={() => console.log("Works!")}
             activeOpacity={0.2}
-            size={100}
+            size={120}
           />
+          <Text style={{marginTop: 20,fontWeight:'bold'}}>
+               NAME PERSON
+          </Text>
           <View style={styles.profileButtons}>
           <TouchableHighlight  style={styles.button} activeOpacity={1}>
             <Text style={styles.textButton}>
@@ -51,6 +54,33 @@ export default class ProfileScreen extends React.Component {
           </View>
           <View>
             <Button style={styles.button} title="Push me" onPress={this.getId} />
+          </View>
+            <View
+                style={{
+                    flexDirection: "row",
+                    padding: 2,
+                    marginTop: 40,
+                }}
+            >
+                <View
+                    style={{
+                        flex: 1,
+                        marginLeft:30
+                    }}
+                >
+                    <Text style={styles.profileInfo}>Email</Text>
+                    <Text style={styles.profileInfo}>Nummer</Text>
+                    <Text style={styles.profileInfo}>Adres</Text>
+                </View>
+                <View
+                    style={{
+                        flex: 2,
+                    }}
+                >
+                    <Text style={{marginBottom: 10}}>Test</Text>
+                    <Text style={{marginBottom: 10}}>Test</Text>
+                    <Text style={{marginBottom: 10}}>Test</Text>
+                </View>
           </View>
         </View>
       );
@@ -79,7 +109,13 @@ export default class ProfileScreen extends React.Component {
     },
     textButton:
     {
-      color: 'white'
+      color: 'white',
+      fontWeight: 'bold',
+    },
+    profileInfo:{
+      fontWeight: 'bold',
+      marginBottom: 10,
+      color: '#707070'
     }
   });
   
