@@ -43,8 +43,10 @@ export default class ProfileScreen extends React.Component {
                 EDIT
             </Text>
           </TouchableHighlight>
-          <TouchableHighlight  style={styles.button} activeOpacity={1}>
-            <Button style={styles.button} title="Logout" onPress={this.logout} />
+          <TouchableHighlight  style={styles.button} onPress={this.logout} activeOpacity={1}>
+            <Text style={styles.textButton}>
+            LOGOUT
+            </Text>
           </TouchableHighlight>
           </View>
           <View>

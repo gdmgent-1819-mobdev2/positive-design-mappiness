@@ -3,7 +3,7 @@ Mappiness to do list
 #Mapscreen
 TODO other users' markers
 TODO styling of markers (icons)
-TODO ...
+TODO Marker click => meet or chat option field
 
 #Loginscreen
 DONE firebase auth
@@ -14,7 +14,20 @@ DONE add user on register
 DONE put user object with info in firebase 
 TODO parse currentUsers id
 
-#Profilepage
+#Profilescreen
+DONE avatar
+DONE Edit / logout button (styling) 
 TODO show current user info
+TODO Run in background
+
+------ SETTINGS-----
+TODO Hide Name
+TODO Update location when app is closed
+TODO Medals
+
+#Chatscreen
+TODO Persons list + distance
+TODO Chat function
+
 
 
