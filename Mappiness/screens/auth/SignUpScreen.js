@@ -1,6 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput, Button, Alert } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button, Alert,Image,TouchableHighlight } from 'react-native';
 import * as firebase from 'firebase';
+
+import { LinearGradient } from 'expo';
+export const red = '#FFE308'
+export const yellow = '#FFA700'
+const EmojiHappy = require('../../assets/images/logo.png');
+export const primaryGradientArray = [red, yellow]
 
 export default class SignUpScreen extends React.Component {
 
@@ -63,82 +69,141 @@ export default class SignUpScreen extends React.Component {
 
     render() {
         return (
-            <View style={{paddingTop:100, alignItems:"center"}}>
-            <Text>SignUp</Text>
+        <React.Fragment>
+            <LinearGradient colors={ primaryGradientArray } style={styles.container}>
+                    <Image
+                        source={EmojiHappy}
+                        style={{
+                            width: 100,
+                            height: 100,
+                            marginBottom: 30,
+                            marginTop: 30,
+                        }}
+                    />   
+                    <View>
+                      <Text style={{fontSize: 30,marginBottom: 30,color: 'white',fontWeight: 'bold'}}>Mappiness</Text>
+                    </View> 
+                <View style={{paddingTop:0, alignItems:"center"}}>
+                <TextInput style={{width: 200, height: 40, borderWidth: 1}}
+                value={this.state.email}
+                onChangeText={(text) => { this.setState({email: text})}}
+                placeholder="Email"
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+                textContentType="emailAddress"
+                style={styles.input}
+                />
+                <View style={{padding:10}}/>
 
-            <TextInput style={{width: 200, height: 40, borderWidth: 1}}
-            value={this.state.email}
-            onChangeText={(text) => { this.setState({email: text})}}
-            placeholder="Email"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoCorrect={false}
-            textContentType="emailAddress"
-            />
-            <View style={{padding:10}}/>
+                <TextInput style={{width: 200, height: 40, borderWidth: 1}}
+                value={this.state.password}
+                onChangeText={(text) => { this.setState({password: text})}}
+                placeholder="Password"
+                secureTextEntry={true}
+                autoCapitalize="none"
+                autoCorrect={false}
+                textContentType="password"
+                style={styles.input}
+                />
+                <View style={{padding:10}}/>
 
-            <TextInput style={{width: 200, height: 40, borderWidth: 1}}
-            value={this.state.password}
-            onChangeText={(text) => { this.setState({password: text})}}
-            placeholder="Password"
-            secureTextEntry={true}
-            autoCapitalize="none"
-            autoCorrect={false}
-            textContentType="password"
-            />
-            <View style={{padding:10}}/>
+                <TextInput style={{width: 200, height: 40, borderWidth: 1}}
+                value={this.state.passwordConfirm}
+                onChangeText={(text) => { this.setState({passwordConfirm: text})}}
+                placeholder="Confirm Password"
+                secureTextEntry={true}
+                autoCapitalize="none"
+                autoCorrect={false}
+                textContentType="password"
+                style={styles.input}
+                /><View style={{padding:10}}/>
 
-            <TextInput style={{width: 200, height: 40, borderWidth: 1}}
-            value={this.state.passwordConfirm}
-            onChangeText={(text) => { this.setState({passwordConfirm: text})}}
-            placeholder="Confirm Password"
-            secureTextEntry={true}
-            autoCapitalize="none"
-            autoCorrect={false}
-            textContentType="password"
-            /><View style={{padding:10}}/>
+                <TextInput style={{width: 200, height: 40, borderWidth: 1}}
+                value={this.state.displayName}
+                onChangeText={(text) => { this.setState({firstName: text})}}
+                placeholder="First Name"
+                secureTextEntry={false}
+                autoCorrect={false}
+                keyboardType="default"
+                textContentType="username"
+                style={styles.input}
+                /><View style={{padding:10}}/>
+                
+                <TextInput style={{width: 200, height: 40, borderWidth: 1}}
+                value={this.state.displayName}
+                onChangeText={(text) => { this.setState({lastName: text})}}
+                placeholder="Last Name"
+                secureTextEntry={false}
+                autoCorrect={false}
+                keyboardType="default"
+                textContentType="username"
+                style={styles.input}
+                /><View style={{padding:10}}/>
 
-            <TextInput style={{width: 200, height: 40, borderWidth: 1}}
-            value={this.state.displayName}
-            onChangeText={(text) => { this.setState({firstName: text})}}
-            placeholder="First Name"
-            secureTextEntry={false}
-            autoCorrect={false}
-            keyboardType="default"
-            textContentType="username"
-            /><View style={{padding:10}}/>
-            
-            <TextInput style={{width: 200, height: 40, borderWidth: 1}}
-            value={this.state.displayName}
-            onChangeText={(text) => { this.setState({lastName: text})}}
-            placeholder="Last Name"
-            secureTextEntry={false}
-            autoCorrect={false}
-            keyboardType="default"
-            textContentType="username"
-            /><View style={{padding:10}}/>
-
-            {/*<TextInput style={{width: 200, height: 40, borderWidth: 1}}
-            value={this.state.phoneNumber}
-            onChangeText={(text) => { this.setState({phoneNumber: text})}}
-            placeholder="123-456-7890"
-            secureTextEntry={false}
-            autoCorrect={false}
-            keyboardType="phone-pad"
-            textContentType="telephoneNumber"
-            maxLength={12}
-            />*/}
-            <Button title="SignUp" onPress={this.onSignUpPress} />
-
-            <Button title="Back to Login..." onPress={this.onBackToLoginPress} />
+                {/*<TextInput style={{width: 200, height: 40, borderWidth: 1}}
+                value={this.state.phoneNumber}
+                onChangeText={(text) => { this.setState({phoneNumber: text})}}
+                placeholder="123-456-7890"
+                secureTextEntry={false}
+                autoCorrect={false}
+                keyboardType="phone-pad"
+                textContentType="telephoneNumber"
+                maxLength={12}
+                />*/}
+                <TouchableHighlight  style={styles.RegButton} onPress={this.onSignUpPress} activeOpacity={1}>
+                        <Text style={styles.login}>
+                            Registreren
+                        </Text>
+                </TouchableHighlight>
+                <Text style={{color:'white',marginTop: 25}} onPress={this.onBackToLoginPress}>
+                    Reeds een account? Klik hier!
+                </Text>
             </View>
+            </LinearGradient>
+        </React.Fragment>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center'
+    },
+    title: {
+      color: '#fff',
+      textAlign: 'right',
+      alignSelf: 'stretch',
+      marginRight: 40,
+    },
+    input: {
+      width: 300,
+      height: 44,
+      padding: 10,
+      borderWidth: 1,
+      borderColor: 'gray',
+      marginBottom: 10,
+      backgroundColor: '#fff',
+      borderRadius: 10
+    },
+    login:{
+      color: 'white',
+      fontWeight: "bold"
+    },
+    RegButton:
+    {
+      borderWidth: 2,
+      borderColor: "#FFF",
+      width: 150,
+      height: 40,
+      borderRadius: 8,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }
+  });
 
-});
 
 
 /*
