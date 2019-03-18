@@ -102,7 +102,9 @@ export default class LoginScreen extends React.Component {
                         secureTextEntry={true}
                         style={styles.input}
                     />
-                    <Button style={styles.title} title="Forgot Password?" onPress={this.onPasswordForget.bind(this)}/>
+                    <Text style={styles.title} onPress={this.onPasswordForget.bind(this)}>
+                    Forgot Password?
+                    </Text>
                       <TouchableHighlight  style={styles.loginButton} onPress={this.onLogin.bind(this)} activeOpacity={1}>
                         <Text style={styles.login}>
                             Login
