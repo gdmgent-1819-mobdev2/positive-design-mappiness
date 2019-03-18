@@ -1,7 +1,7 @@
 Mappiness to do list
 
 #Mapscreen
-TODO other users' markers // jonas
+DONE other users' markers // jonas
 DONE styling of markers (icons)
 TODO Marker click => meet or chat option field // nick
 TODO Slider with emotion => via react native elements components! // jonas

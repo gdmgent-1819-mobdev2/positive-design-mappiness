@@ -7,11 +7,11 @@ import ChatScreen from './screens/ChatScreen';
 import ProfileScreen from './screens/ProfileScreen';
 
 const AppNavigator = createStackNavigator({
-    Login: {
-        screen: LoginScreen,
-    },
     Home: {
         screen: HomeScreen,
+    },
+    Login: {
+        screen: LoginScreen,
     },
     Signup: {
         screen: SignUpScreen,
