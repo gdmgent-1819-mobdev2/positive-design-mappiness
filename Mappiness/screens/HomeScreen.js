@@ -7,6 +7,7 @@ import Firebase from '../base';
 import { MapView, Permissions, Location } from 'expo';
 const EmojiHappy = require('../assets/icons/emoji/happy.png');
 const listIcon = require('../assets/icons/list.png');
+const plusIcon = require('../assets/icons/plus.png');
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -93,10 +94,18 @@ export default class HomeScreen extends React.Component {
         <Avatar
           source={listIcon}
           activeOpacity={0.2}
-          size={50}
+          size={35}
           style={styles.listIcon}
           overlayContainerStyle={{backgroundColor: 'transparent'}}
           onPress={() => this.props.navigation.navigate('Chat')}
+        />
+        <Avatar
+          source={plusIcon}
+          activeOpacity={0.2}
+          size={35}
+          style={styles.addIcon}
+          overlayContainerStyle={{backgroundColor: 'transparent'}}
+          onPress={() => this.props.navigation.navigate('Slider')}
         />
     </React.Fragment>    
       );
@@ -128,8 +137,21 @@ export default class HomeScreen extends React.Component {
       position: 'absolute',
       bottom: 40,
       right: 20,
-      width: 50,
-      height: 50,
+      width: 35,
+      height: 35,
+    },
+    addIcon: {
+      position: 'absolute',
+      left: '50%', 
+      right: '50%', 
+      bottom: 30, 
+      width:60,
+      height:60,
+      marginLeft: -30,
+      marginRight: -30,
+      backgroundColor: "#FFD304",
+      borderRadius: 50,
+      padding: 10
     }
   });
   
