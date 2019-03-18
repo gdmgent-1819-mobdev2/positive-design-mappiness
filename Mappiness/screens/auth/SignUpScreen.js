@@ -9,6 +9,7 @@ const EmojiHappy = require('../../assets/images/logo.png');
 export const primaryGradientArray = [red, yellow]
 
 export default class SignUpScreen extends React.Component {
+    
 
     constructor(props) {
         super(props);
