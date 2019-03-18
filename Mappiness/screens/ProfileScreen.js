@@ -63,7 +63,7 @@ export default class ProfileScreen extends React.Component {
             <View style={styles.container}  ref={(ref) => { this.context = context; }}>
               <Avatar
                 rounded
-                source={{uri: "https://pbs.twimg.com/profile_images/814534536830795776/CO84uTK8_400x400.jpg"}}
+                source={{uri: "https://credly.com/web/addons/shared_addons/themes/credly/img/avatar_default_large.png"}}
                 onPress={() => console.log("Works!")}
                 activeOpacity={0.2}
                 size={120}

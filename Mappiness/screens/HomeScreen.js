@@ -1,15 +1,20 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, FlatList, ActivityIndicator, Alert, Image } from 'react-native';
 import * as firebase from 'firebase';
+import { Avatar } from 'react-native-elements';
 import { LinearGradient } from 'expo';
-
 import Firebase from '../base';
 import { MapView, Permissions, Location } from 'expo';
 const EmojiHappy = require('../assets/icons/emoji/happy.png');
+const listIcon = require('../assets/icons/list.png');
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Home',
+    };
+
+    static navigationOptions = {
+      header: null,
     };
 
     constructor(props){
@@ -47,6 +52,7 @@ export default class HomeScreen extends React.Component {
 
     render() {
       return (
+    <React.Fragment>  
         <MapView
           initialRegion={this.state.region}
           showCompass={true}
@@ -54,8 +60,7 @@ export default class HomeScreen extends React.Component {
           rotateEnabled={true}
           style={{flex: 1}}
         >
-
-            <MapView.Marker coordinate={this.state.loc} >
+        <MapView.Marker coordinate={this.state.loc} >
                 <Image
                     source={EmojiHappy}
                     style={{
@@ -63,9 +68,25 @@ export default class HomeScreen extends React.Component {
                         height: 45,
                     }}
                 />
-            </MapView.Marker>
-
+        </MapView.Marker>
         </MapView>
+          <Avatar
+          rounded
+          source={{uri: "https://credly.com/web/addons/shared_addons/themes/credly/img/avatar_default_large.png"}}
+          activeOpacity={0.2}
+          size={50}
+          style={styles.avatar}
+          onPress={() => this.props.navigation.navigate('Profile')}
+        />
+        <Avatar
+          source={listIcon}
+          activeOpacity={0.2}
+          size={50}
+          style={styles.listIcon}
+          overlayContainerStyle={{backgroundColor: 'none'}}
+          onPress={() => this.props.navigation.navigate('Chat')}
+        />
+    </React.Fragment>    
       );
     }
   }
@@ -83,6 +104,20 @@ export default class HomeScreen extends React.Component {
     mark: {
         width: 50,
         display: 'none',
+    },
+    avatar: {
+      position: 'absolute',
+      top: 60,
+      right: 20,
+      width: 50,
+      height: 50,
+    },
+    listIcon: {
+      position: 'absolute',
+      bottom: 40,
+      right: 20,
+      width: 50,
+      height: 50,
     }
   });
   
