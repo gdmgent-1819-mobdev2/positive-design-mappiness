@@ -7,7 +7,7 @@ import { AppConsumer, AppProvider } from '../components/userContext';
 
 export default class ProfileScreen extends React.Component {
     componentDidMount() {
-      //this.context.watchPersonData(); 
+      this.context.watchPersonData(); 
     }
 
     static navigationOptions = {
@@ -95,7 +95,7 @@ export default class ProfileScreen extends React.Component {
                   size={120}
                 />
                 <Text style={{marginTop: 20,fontWeight:'bold'}}>
-                    dvjb
+                  {context.personData.Naam}
                 </Text>
             </View>
             <View style={styles.profileButtons}>
@@ -117,9 +117,9 @@ export default class ProfileScreen extends React.Component {
                         <Text style={styles.profileInfo}>Email</Text>
                     </View>
                     <View style={{flex: 2}}>
-                        <Text style={{marginBottom: 15}}>dfzzr{context.personData.Naam}</Text>
-                        <Text style={{marginBottom: 15}}>vfsvfv{context.personData.FamilieNaam}</Text>
-                        <Text style={{marginBottom: 15}}>fvfbbvfb{context.personData.Email}</Text>
+                        <Text style={{marginBottom: 15}}>{context.personData.Naam}</Text>
+                        <Text style={{marginBottom: 15}}>{context.personData.FamilieNaam}</Text>
+                        <Text style={{marginBottom: 15}}>{context.personData.Email}</Text>
                     </View>
                 </View>
                 <View style={{flexDirection: "row",padding: 2,marginTop: 0,marginBottom: 30,}}>
@@ -141,7 +141,7 @@ export default class ProfileScreen extends React.Component {
                     
                       </View>
                 </View>
-                <View><Text style={{fontSize:20,paddingLeft: 30,marginTop: 10,marginBottom: 10,fontWeight:'bold'}}>Badges</Text></View>
+                <View><Text style={{fontSize:20,paddingLeft: 30,marginTop: 10,marginBottom: 10,fontWeight:'bold',color:'#FFD304'}}>Badges</Text></View>
                 <View style={{flex: 1,paddingBottom: 40,flexDirection:'row', flexWrap:'wrap',justifyContent:'space-around'}}> 
                   {
                     list.map((l, i) => (
