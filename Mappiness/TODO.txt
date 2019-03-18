@@ -19,7 +19,7 @@ DONE parse currentUsers id
 DONE avatar
 DONE Edit / logout button (styling) 
 DONE show current user info
-TODO Medals // nick
+TODO Medals // nick => DONE!
 
 ------ SETTINGS----- STYLING DONE
 TODO Hide Name // jonas
@@ -38,6 +38,7 @@ index.html (site) => download voor app   //owen
 scroll in app //nick
 edit screen // nick
 icons map screen => profile,Chat //nick = DONE!
+edit profile // owen
 
 
 

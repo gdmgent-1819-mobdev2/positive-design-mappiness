@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, FlatList, ActivityIndicator, Alert, Image } from 'react-native';
 import * as firebase from 'firebase';
-import { Avatar } from 'react-native-elements';
+import { Avatar,Overlay } from 'react-native-elements';
 import { LinearGradient } from 'expo';
 import Firebase from '../base';
 import { MapView, Permissions, Location } from 'expo';
@@ -24,7 +24,8 @@ export default class HomeScreen extends React.Component {
         location: {
           latitude: 53,
           longitude: 3,
-        }
+        },
+        isVisible: false
       }
       this._getLocationAsync();
     }
@@ -52,7 +53,17 @@ export default class HomeScreen extends React.Component {
 
     render() {
       return (
-    <React.Fragment>  
+    <React.Fragment> 
+    <Overlay
+  isVisible={this.state.isVisible}
+  windowBackgroundColor="rgba(255, 255, 255, .5)"
+  overlayBackgroundColor="red"
+  width="auto"
+  height="auto"
+>
+
+  <Text>Hello from Overlay!</Text>
+</Overlay>
         <MapView
           initialRegion={this.state.region}
           showCompass={true}
@@ -62,6 +73,7 @@ export default class HomeScreen extends React.Component {
         >
         <MapView.Marker coordinate={this.state.loc} >
                 <Image
+                    onPress={() => console.log("sff")}
                     source={EmojiHappy}
                     style={{
                         width: 45,
@@ -83,7 +95,7 @@ export default class HomeScreen extends React.Component {
           activeOpacity={0.2}
           size={50}
           style={styles.listIcon}
-          overlayContainerStyle={{backgroundColor: 'none'}}
+          overlayContainerStyle={{backgroundColor: 'transparent'}}
           onPress={() => this.props.navigation.navigate('Chat')}
         />
     </React.Fragment>    

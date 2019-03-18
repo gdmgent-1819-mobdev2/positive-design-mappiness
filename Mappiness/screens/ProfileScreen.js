@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Text,Switch, TextInput, Button, Alert,TouchableHighlight,TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text,Switch, TextInput, Button, Alert,TouchableHighlight,TouchableOpacity,ScrollView } from 'react-native';
 import * as firebase from 'firebase';
-import { Avatar } from 'react-native-elements';
+import { Avatar, Badge, Icon, withBadge,ListItem } from 'react-native-elements'
 import { AppConsumer, AppProvider } from '../components/userContext';
 
 
@@ -57,34 +57,58 @@ export default class ProfileScreen extends React.Component {
     }
  
     render() {
+
+      const list = [
+        {
+          name: 'Amy Farha',
+          avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+   
+        },
+        {
+          name: 'Chris Jackson',
+          avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+         
+        },
+        {
+          name: 'Amy Farha',
+          avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+      
+        },
+        {
+          name: 'Chris Jackson',
+          avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+        
+        },
+      ]
+      
       return (
+        <View style={styles.container}>
           <AppConsumer>
             {(context) => (
-            <View style={styles.container}  ref={(ref) => { this.context = context; }}>
-              <Avatar
-                rounded
-                source={{uri: "https://credly.com/web/addons/shared_addons/themes/credly/img/avatar_default_large.png"}}
-                onPress={() => console.log("Works!")}
-                activeOpacity={0.2}
-                size={120}
-              />
-              <Text style={{marginTop: 20,fontWeight:'bold'}}>
+            <ScrollView ref={(ref) => { this.context = context; }}>
+             <View style={styles.profileAvatar}> 
+                <Avatar
+                  rounded
+                  source={{uri: "https://credly.com/web/addons/shared_addons/themes/credly/img/avatar_default_large.png"}}
+                  onPress={() => console.log("Works!")}
+                  activeOpacity={0.2}
+                  size={120}
+                />
+                <Text style={{marginTop: 20,fontWeight:'bold'}}>
                   {context.personData.Naam}
-              </Text>
-              <View style={styles.profileButtons}>
-              <TouchableHighlight  style={styles.button} activeOpacity={1}>
-                <Text style={styles.textButton}>
-                    EDIT
                 </Text>
-              </TouchableHighlight>
-              <TouchableHighlight  style={styles.button} onPress={this.logout} activeOpacity={1}>
-                <Text style={styles.textButton}>
-                LOGOUT
-                </Text>
-              </TouchableHighlight>
-              </View>
-              <View>
-                <Button style={styles.button} title="Push me" onPress={this.getId} />
+            </View>
+            <View style={styles.profileButtons}>
+                <TouchableHighlight  style={styles.button} activeOpacity={1}>
+                  <Text style={styles.textButton}>
+                      EDIT
+                  </Text>
+                </TouchableHighlight>
+                <TouchableHighlight  style={styles.button} onPress={this.logout} activeOpacity={1}>
+                  <Text style={styles.textButton}>
+                  LOGOUT
+                  </Text>
+                </TouchableHighlight>
               </View>
                 <View style={{flexDirection: "row",padding: 2,marginTop: 40}}>
                     <View style={{flex: 1,marginLeft:30}}>
@@ -98,7 +122,7 @@ export default class ProfileScreen extends React.Component {
                         <Text style={{marginBottom: 15}}>{context.personData.Email}</Text>
                     </View>
                 </View>
-                <View style={{flexDirection: "row",padding: 2,marginTop: 40}}>
+                <View style={{flexDirection: "row",padding: 2,marginTop: 30,marginBottom: 30,}}>
                     <View style={{flex: 3,marginLeft:30}}>
                         <Text style={[styles.profileInfo , styles.border]}>Verder lopen in achtergrond</Text>
                         <Text style={[styles.profileInfo , styles.border]}>Verberg Naam</Text>
@@ -117,14 +141,32 @@ export default class ProfileScreen extends React.Component {
                     
                       </View>
                 </View>
-                <View>
-                <Text>dkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkdkjgkdbgfskbnfskjbnfjksnbmkekjbfkezjbfzebfjhezbzekhjbg</Text>
-                </View>
-              
-            </View>
+                <View><Text style={{fontSize:20,paddingLeft: 30,marginTop: 10,marginBottom: 10,fontWeight:'bold',color:'#FFD304'}}>Badges</Text></View>
+                <View style={{flex: 1,paddingBottom: 40,flexDirection:'row', flexWrap:'wrap',justifyContent:'space-around'}}> 
+                  {
+                    list.map((l, i) => (
+                    <View  key={i} style={styles.badgesBox}>   
+                      <Avatar
+                        rounded
+                        source={{
+                          uri: 'https://randomuser.me/api/portraits/men/41.jpg',
+                        }}
+                        size={110}
+                      />
+                      <Text style={{flexDirection: 'row', justifyContent: 'flex-end',marginTop: 10,}}>{l.name}</Text>
+                      <Badge
+                        status="primary"
+                        value="vrij gespeeld!"
+                        containerStyle={{ position: 'absolute', top: 10, right: 0 }}
+                      />
+                    </View>  
+                    ))
+                  }
+                </View>  
+            </ScrollView>
             )}
           </AppConsumer>
-
+        </View>
       );
     }
   }
@@ -132,12 +174,18 @@ export default class ProfileScreen extends React.Component {
   const styles = StyleSheet.create({
     container: {
       backgroundColor: '#fff',
-      alignItems: 'center',
-      paddingTop: 30
+      paddingTop: 30,
+      flex: 1,
     },
-    profileButtons: {
+    profileAvatar:{
+      alignItems: 'center',
+      justifyContent: 'center',
+    }
+    ,profileButtons: {
       marginTop: 20,
       flexDirection:'row',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     button:{
       margin: 10,
@@ -167,6 +215,12 @@ export default class ProfileScreen extends React.Component {
     buttonSwitch:
     {
       marginTop: 25,
+    },
+    badgesBox:
+    {
+      alignItems: 'center',
+      padding: 10,
+      marginBottom: 20,
     }
   });
   
