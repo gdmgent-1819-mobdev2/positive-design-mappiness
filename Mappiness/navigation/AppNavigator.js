@@ -4,26 +4,23 @@ import { default as HomeScreen } from 'screens/HomeScreen';
 import { default as ChatScreen } from 'screens/ChatScreen';
 import { default as ProfileScreen } from 'screens/ProfileScreen';
 import {
-  createStackNavigator
+  StackNavigator
 } from 'react-navigation';
 
-const AppNavigator = createStackNavigator(
+
+
+const AppNavigator = StackNavigator(
   {
-    Home: HomeScreen,
+    Home: {
+      screen: HomeScreen,
+      NavigationOptions: {
+        title: 'Home',
+        header: null //this will hide the header
+      },
+  },
     Login: LoginScreen,
     Chat: ChatScreen,
     Profile: ProfileScreen
-  },
-  {
-    initialRouteName: "Home",
-    defaultNavigationOptions: {
-      headerStyle: {
-      },
-      headerTitle: "Simple ToDo App",
-      headerTitleStyle: {
-        fontSize: 20
-      },
-    }
   }
 );
 

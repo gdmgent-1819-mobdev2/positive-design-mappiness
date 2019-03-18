@@ -16,6 +16,9 @@ export default class LoginScreen extends React.Component {
           password: '',
         };
       }
+      static navigationOptions = {
+        header: null,
+      };
       _storeData = async () => {
         try {
             await AsyncStorage.setItem('loggedin', true);
@@ -114,8 +117,6 @@ export default class LoginScreen extends React.Component {
                          Geen account? Klik hier!
                       </Text>
                 </LinearGradient>
-                <Button title="Go to profile" onPress={this.onProfile.bind(this)}/>
-                <Button title="Go to map" onPress={() => this.props.navigation.navigate('Home')}/>
             </React.Fragment>
         );
     }
