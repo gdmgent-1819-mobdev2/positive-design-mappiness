@@ -5,22 +5,26 @@ import SignUpScreen from './screens/auth/SignUpScreen';
 import HomeScreen from './screens/HomeScreen';
 import ChatScreen from './screens/ChatScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import ProfileEditScreen from './screens/ProfileEditScreen';
 
 const AppNavigator = createStackNavigator({
     Login: {
         screen: LoginScreen,
     },
-    Home: {
-        screen: HomeScreen,
-    },
     Signup: {
         screen: SignUpScreen,
+    },
+    Home: {
+        screen: HomeScreen,
     },
     Chat: {
         screen: ChatScreen,
     },
     Profile: {
         screen: ProfileScreen,
+    },
+    ProfileEdit: {
+        screen: ProfileEditScreen,
     },
 });
 

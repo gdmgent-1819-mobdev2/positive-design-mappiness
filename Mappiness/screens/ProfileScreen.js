@@ -100,7 +100,7 @@ export default class ProfileScreen extends React.Component {
                 </Text>
             </View>
             <View style={styles.profileButtons}>
-                <TouchableHighlight  style={styles.button} activeOpacity={1}>
+                <TouchableHighlight  style={styles.button} onPress={() => this.props.navigation.navigate('ProfileEdit')} activeOpacity={1}>
                   <Text style={styles.textButton}>
                       EDIT
                   </Text>
@@ -123,7 +123,7 @@ export default class ProfileScreen extends React.Component {
                         <Text style={{marginBottom: 15}}>{context.personData.Email}</Text>
                     </View>
                 </View>
-                <View style={{flexDirection: "row",padding: 2,marginTop: 0,marginBottom: 30,}}>
+                <View style={{flexDirection: "row",padding: 2,marginTop: 30,marginBottom: 30,}}>
                     <View style={{flex: 3,marginLeft:30}}>
                         <Text style={[styles.profileInfo , styles.border]}>Verder lopen in achtergrond</Text>
                         <Text style={[styles.profileInfo , styles.border]}>Verberg Naam</Text>
