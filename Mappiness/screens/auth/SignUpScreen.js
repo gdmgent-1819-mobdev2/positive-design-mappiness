@@ -47,24 +47,6 @@ export default class SignUpScreen extends React.Component {
         */
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then(() => {
-          let imagePath;
-          let imgURL;
-          const image = document.getElementById('image');
-          image.addEventListener('change', (evt) => {
-            if (image.value !== '') {
-              const filename = evt.target.files[0].name.replace(/\s+/g, '-').toLowerCase();
-              const storageRef = firebase.storage().ref(`images/${filename}`);
-
-              storageRef.put(evt.target.files[0]).then(() => {
-                imagePath = `images/${filename}`;
-
-                const storeimage = firebase.storage().ref(imagePath);
-                storeimage.getDownloadURL().then((url) => {
-                  imgURL = url;
-                });
-              });
-            }
-          });
             const Naam =  this.state.firstName;
             const FamilieNaam =  this.state.lastName;
             const Email =  this.state.email;
