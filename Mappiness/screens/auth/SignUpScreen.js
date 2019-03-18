@@ -55,7 +55,6 @@ export default class SignUpScreen extends React.Component {
             
             const userid = firebase.auth().currentUser.uid;
             firebase.database().ref().child('users').child(userid).set({
-                image: imgURL,
                 Naam,
                 FamilieNaam,
                 Email,
