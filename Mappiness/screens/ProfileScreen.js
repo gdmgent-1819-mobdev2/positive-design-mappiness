@@ -3,6 +3,7 @@ import { StyleSheet, View, Text,Switch, TextInput, Button, Alert,TouchableHighli
 import * as firebase from 'firebase';
 import { Avatar, Badge, Icon, withBadge,ListItem } from 'react-native-elements'
 import { AppConsumer, AppProvider } from '../components/userContext';
+import {AsyncStorage} from 'react-native';
 
 
 export default class ProfileScreen extends React.Component {
