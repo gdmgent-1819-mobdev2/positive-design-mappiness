@@ -37,7 +37,8 @@ export default class ProfileScreen extends React.Component {
       });
     }
     
-    logout = () => {
+    logout = async() => {
+      await AsyncStorage.setItem('IsLoggedIn','no');
       firebase.auth().signOut();
       Alert.alert('uitgelogd');
       this.props.navigation.navigate("Login");
@@ -50,7 +51,7 @@ export default class ProfileScreen extends React.Component {
         // do something
         Alert.alert('test');
       } else {
-        
+
         // do something else
       }
     }
