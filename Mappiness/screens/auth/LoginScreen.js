@@ -3,6 +3,8 @@ import {StyleSheet,Text,View,TextInput,Button,TouchableHighlight,Image,Alert} fr
 import * as firebase from 'firebase';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { LinearGradient } from 'expo';
+import {AsyncStorage} from 'react-native';
+
 export const red = '#FFE308'
 export const yellow = '#FFA700'
 const EmojiHappy = require('../../assets/images/logo.png');
@@ -15,29 +17,22 @@ export default class LoginScreen extends React.Component {
           username: '',
           password: '',
         };
+        this._getLocationAsync();
       }
       static navigationOptions = {
         header: null,
       };
-      _storeData = async () => {
-        try {
-            await AsyncStorage.setItem('loggedin', true);
-        } catch (error) {
-          // Error saving data
+      _getLocationAsync = async() => {
+        const value = await AsyncStorage.getItem('IsLoggedIn');
+        if(value == 'hai'){
+          this.props.navigation.navigate("Home");
         }
-      };
-      _retrieveData = async () => {
-        try {
-          const value = await AsyncStorage.getItem('loggedin');
-          if (value !== null) {
-            // We have data!!
-            Alert.alert(value)
-          }
-        } catch (error) {
-          // Error retrieving data
+        else{
+          
         }
-      };
-      onLogin() {
+      }
+      onLogin = async() => {
+        await AsyncStorage.setItem('IsLoggedIn','hai');
         const username = this.state.username
         const password = this.state.password
         firebase.auth().signInWithEmailAndPassword(username, password)
