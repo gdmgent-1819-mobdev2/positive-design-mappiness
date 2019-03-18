@@ -32,7 +32,6 @@ export default class ProfileScreen extends React.Component {
           })
         }
         else{
-          Alert.alert('Niet ingelogd')
           this.props.navigation.navigate("Login");
         }
       });
