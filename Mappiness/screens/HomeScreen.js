@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, FlatList, ActivityIndicator, Alert, Image } from 'react-native';
 import * as firebase from 'firebase';
-import { Avatar,Overlay } from 'react-native-elements';
+import { Avatar } from 'react-native-elements';
 import { LinearGradient } from 'expo';
 import Firebase from '../base';
 import { MapView, Permissions, Location } from 'expo';
@@ -20,15 +20,26 @@ export default class HomeScreen extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-        region: null,
-        location: {
-          latitude: 53,
-          longitude: 3,
-        },
-        isVisible: false
+          region: null,
+          location: {
+              latitude: 53,
+              longitude: 3,
+          },
+          loc: {
+              latitude: 53,
+              longitude: 3,
+          },
+          userCoords: [
+              {
+                  latitude: 1,
+                  longitude: 2
+              }
+          ]
       }
       this._getLocationAsync();
     }
+
+
   
     _getLocationAsync =  async () => {
       let { status } = await Permissions.askAsync(Permissions.LOCATION);
@@ -47,59 +58,78 @@ export default class HomeScreen extends React.Component {
         latitude: region.latitude,
         longitude: region.longitude,
         }})
-        const uid = firebase.auth().currentUser.uid;
-        firebase.database().ref(`users/${uid}/currentlocation`).set(this.state.loc);
+        // const uid = firebase.auth().currentUser.uid;
+        // firebase.database().ref(`users/${uid}/currentlocation`).set(this.state.loc);
+
+        firebase.database().ref('users').on('value', (snapshot) => {
+            let userCoords = [];
+            snapshot.forEach((child) => {
+                const tmp = child.val()
+                userCoords.push(tmp.currentlocation)
+            })
+            this.setState({userCoords: userCoords})
+            console.log(this.state.userCoords)
+        })
     }
 
     render() {
-      return (
-    <React.Fragment> 
-    <Overlay
-  isVisible={this.state.isVisible}
-  windowBackgroundColor="rgba(255, 255, 255, .5)"
-  overlayBackgroundColor="red"
-  width="auto"
-  height="auto"
->
+        return (
+            <React.Fragment>
+                <MapView
+                    initialRegion={this.state.region}
+                    showCompass={true}
+                    showsUserLocation={false}
+                    rotateEnabled={true}
+                    style={{flex: 1}}
+                >
 
-  <Text>Hello from Overlay!</Text>
-</Overlay>
-        <MapView
-          initialRegion={this.state.region}
-          showCompass={true}
-          showsUserLocation={false}
-          rotateEnabled={true}
-          style={{flex: 1}}
-        >
-        <MapView.Marker coordinate={this.state.loc} >
-                <Image
-                    onPress={() => console.log("sff")}
-                    source={EmojiHappy}
-                    style={{
-                        width: 45,
-                        height: 45,
-                    }}
+                    <MapView.Marker coordinate={this.state.loc}>
+                        <Image
+                            source={EmojiHappy}
+                            style={{
+                                width: 45,
+                                height: 45,
+                            }}
+                        />
+                    </MapView.Marker>
+
+                    <MapView.Marker coordinate={{
+                        latitude: 50.925318,
+                        longitude: 3.670027,
+                    }}/>
+
+                    {this.state.userCoords.map(item => {
+                        <MapView.Marker coordinate={item}>
+                            <Image
+                                source={EmojiHappy}
+                                style={{
+                                    width: 45,
+                                    height: 45,
+                                }}
+                            />
+                        </MapView.Marker>
+                    })}
+
+                </MapView>
+
+                <Avatar
+                    rounded
+                    source={{uri: "https://credly.com/web/addons/shared_addons/themes/credly/img/avatar_default_large.png"}}
+                    activeOpacity={0.2}
+                    size={50}
+                    style={styles.avatar}
+                    onPress={() => this.props.navigation.navigate('Profile')}
                 />
-        </MapView.Marker>
-        </MapView>
-          <Avatar
-          rounded
-          source={{uri: "https://credly.com/web/addons/shared_addons/themes/credly/img/avatar_default_large.png"}}
-          activeOpacity={0.2}
-          size={50}
-          style={styles.avatar}
-          onPress={() => this.props.navigation.navigate('Profile')}
-        />
-        <Avatar
-          source={listIcon}
-          activeOpacity={0.2}
-          size={50}
-          style={styles.listIcon}
-          overlayContainerStyle={{backgroundColor: 'transparent'}}
-          onPress={() => this.props.navigation.navigate('Chat')}
-        />
-    </React.Fragment>    
-      );
+                <Avatar
+                    source={listIcon}
+                    activeOpacity={0.2}
+                    size={50}
+                    style={styles.listIcon}
+                    overlayContainerStyle={{backgroundColor: 'transparent'}}
+                    onPress={() => this.props.navigation.navigate('Chat')}
+                />
+            </React.Fragment>
+        )
     }
   }
 
