@@ -6,7 +6,7 @@ import { Avatar, Badge, Icon, withBadge,ListItem,Slider } from 'react-native-ele
 export default class SliderScreen extends React.Component {
 
     static navigationOptions = {
-        title: 'emotie kiezen',
+        title: 'Emotie kiezen',
     };
 
     constructor(props) {
@@ -37,6 +37,9 @@ export default class SliderScreen extends React.Component {
                     <Text style={styles.colorYellow}>
                         {this.state.distance}
                     </Text>
+                    <TouchableHighlight  onPress={() => this.props.navigation.navigate('Home')} style={styles.EmoticonBtn} activeOpacity={1}>
+                    <Text style={{ overflow:'hidden',color:"#FFF" }}>Emotie bevestigen</Text>
+                    </TouchableHighlight>
                 </View>
             </View>
       );
@@ -46,8 +49,19 @@ export default class SliderScreen extends React.Component {
   const styles = StyleSheet.create({
     container: {
       backgroundColor: '#fff',
-      paddingTop: 30,
       flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    EmoticonBtn:
+    {
+      backgroundColor: '#FFD304',
+      borderRadius: 10,
+      width: 150,
+      height: 45,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 30,
     }
   });
   

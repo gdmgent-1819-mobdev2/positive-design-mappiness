@@ -74,7 +74,6 @@ export default class HomeScreen extends React.Component {
         >
         <MapView.Marker coordinate={this.state.loc} >
                 <Image
-                    onPress={() => console.log("sff")}
                     source={EmojiHappy}
                     style={{
                         width: 45,
