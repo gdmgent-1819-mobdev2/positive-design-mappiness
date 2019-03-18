@@ -49,6 +49,17 @@ export default class LoginScreen extends React.Component {
               Alert.alert(errorMessage + errorCode);
          });
       }
+      onProfile(){
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+          this.props.navigation.navigate('Profile')
+          }
+          else{
+            Alert.alert('Gelieve in te loggen')
+            this.props.navigation.navigate("Login");
+          }
+        });
+      }
       
     render() {
         const {navigate} = this.props.navigation;
@@ -89,7 +100,7 @@ export default class LoginScreen extends React.Component {
                          Geen account? Klik hier!
                       </Text>
                 </LinearGradient>
-                <Button title="Go to profile" onPress={() => this.props.navigation.navigate('Profile')}/>
+                <Button title="Go to profile" onPress={this.onProfile.bind(this)}/>
                 <Button title="Go to map" onPress={() => this.props.navigation.navigate('Home')}/>
             </React.Fragment>
         );
