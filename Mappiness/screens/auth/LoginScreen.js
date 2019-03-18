@@ -60,6 +60,18 @@ export default class LoginScreen extends React.Component {
           }
         });
       }
+      onPasswordForget(){
+        firebase.auth().sendPasswordResetEmail(this.state.username)
+        .then(() => {
+          alert('Please check your email...')
+        })  .catch((error) => {
+          // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // show errors in console
+            alert(errorMessage + errorCode + ' Gelieve geldig email in te geven');
+          });
+      }
       
     render() {
         const {navigate} = this.props.navigation;
@@ -90,7 +102,7 @@ export default class LoginScreen extends React.Component {
                         secureTextEntry={true}
                         style={styles.input}
                     />
-                    <Text style={styles.title}>Forgot Password?</Text>
+                    <Button style={styles.title} title="Forgot Password?" onPress={this.onPasswordForget.bind(this)}/>
                       <TouchableHighlight  style={styles.loginButton} onPress={this.onLogin.bind(this)} activeOpacity={1}>
                         <Text style={styles.login}>
                             Login
