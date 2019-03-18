@@ -3,10 +3,10 @@ import { StyleSheet, Text, View, FlatList, ActivityIndicator, Alert, Image } fro
 import * as firebase from 'firebase';
 import { Avatar } from 'react-native-elements';
 import { LinearGradient } from 'expo';
-
 import Firebase from '../base';
 import { MapView, Permissions, Location } from 'expo';
 const EmojiHappy = require('../assets/icons/emoji/happy.png');
+const listIcon = require('../assets/icons/list.png');
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -72,11 +72,19 @@ export default class HomeScreen extends React.Component {
         </MapView>
           <Avatar
           rounded
-          source={{uri: "https://pbs.twimg.com/profile_images/814534536830795776/CO84uTK8_400x400.jpg"}}
+          source={{uri: "https://credly.com/web/addons/shared_addons/themes/credly/img/avatar_default_large.png"}}
           activeOpacity={0.2}
           size={50}
           style={styles.avatar}
           onPress={() => this.props.navigation.navigate('Profile')}
+        />
+        <Avatar
+          source={listIcon}
+          activeOpacity={0.2}
+          size={50}
+          style={styles.listIcon}
+          overlayContainerStyle={{backgroundColor: 'none'}}
+          onPress={() => this.props.navigation.navigate('Chat')}
         />
     </React.Fragment>    
       );
@@ -96,12 +104,20 @@ export default class HomeScreen extends React.Component {
     mark: {
         width: 50,
         display: 'none',
-    },avatar: {
+    },
+    avatar: {
       position: 'absolute',
       top: 60,
       right: 20,
       width: 50,
       height: 50,
-  }
+    },
+    listIcon: {
+      position: 'absolute',
+      bottom: 40,
+      right: 20,
+      width: 50,
+      height: 50,
+    }
   });
   
