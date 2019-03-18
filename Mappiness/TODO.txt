@@ -13,12 +13,12 @@ TODO check if online to switch to mapscreen (for Jonas?) -> async functions writ
 #Registerscreen STYLING DONE
 DONE add user on register
 DONE put user object with info in firebase 
-TODO parse currentUsers id
+DONE parse currentUsers id
 
 #Profilescreen
 DONE avatar
 DONE Edit / logout button (styling) 
-TODO show current user info
+DONE show current user info
 TODO Medals
 
 ------ SETTINGS----- STYLING DONE

@@ -48,7 +48,9 @@ export default class ProfileScreen extends React.Component {
     showCalculation = () => {
       if (this.state.isSwitchOn) {
         // do something
+        Alert.alert('test');
       } else {
+        
         // do something else
       }
     }
