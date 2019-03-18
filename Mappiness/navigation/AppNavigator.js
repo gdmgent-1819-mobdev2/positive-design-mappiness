@@ -21,6 +21,7 @@ const AppNavigator = StackNavigator(
     Login: LoginScreen,
     Chat: ChatScreen,
     Profile: ProfileScreen
+    ProfileEdit: ProfileEdit
   }
 );
 
