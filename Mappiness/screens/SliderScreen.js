@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Text,Switch, TextInput, Button, Alert,TouchableHighlight,TouchableOpacity,ScrollView } from 'react-native';
+import { StyleSheet, View, Text,Switch, TextInput, Button, Alert,TouchableHighlight,TouchableOpacity,Image } from 'react-native';
 import * as firebase from 'firebase';
 import { Avatar, Badge, Icon, withBadge,ListItem,Slider } from 'react-native-elements'
+
+const EmojiHappy = require('../assets/icons/emoji/happy.png');
+const EmojiSad = require('../assets/icons/emoji/sad.png');
+const EmojiCry = require('../assets/icons/emoji/cry.png');
+const EmojiShock = require('../assets/icons/emoji/shock.png');
 
 export default class SliderScreen extends React.Component {
 
@@ -12,18 +17,60 @@ export default class SliderScreen extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        distance: 0,
-        minDistance: 0,
-        maxDistance: 100
+        distance: 1,
+        minDistance: 1,
+        maxDistance: 4
+        }   
     }
-    }
-    
     
     render() {
       return (
         <View style={styles.container}>
+
+                {this.state.distance == 1 && (
+                  <View>
+                    <Image source={EmojiHappy} style={{
+                      width: 150,
+                      height: 150,
+                      }}
+                    />
+                    <Text style={styles.titleEmo}>Blij</Text>
+                  </View>
+                )}
+                {this.state.distance == 2 && (
+                  <View>
+                    <Image source={EmojiShock} style={{
+                      width: 150,
+                      height: 150,
+                      }}
+                    />
+                    <Text style={styles.titleEmo}>Geschroken</Text>
+                  </View>
+                )}
+                {this.state.distance == 3 && (
+                  <View>
+                    <Image source={EmojiSad} style={{
+                      width: 150,
+                      height: 150,
+                      }}
+                    />
+                    <Text style={styles.titleEmo}>gefrustreerd</Text>
+                  </View>
+                )}
+                {this.state.distance == 4 && (
+                  <View>
+                    <Image source={EmojiCry} style={{
+                      width: 150,
+                      height: 150,
+                      }}
+                    />
+                    <Text style={styles.titleEmo}>Verdrietig</Text>
+                  </View>
+                )}
+
+
                 <Slider
-                    style={{ width: 300}}
+                    style={{ width: 300,marginTop: 50}}
                     step={1}
                     minimumValue={this.state.minDistance}
                     maximumValue={this.state.maxDistance}
@@ -34,9 +81,6 @@ export default class SliderScreen extends React.Component {
                     minimumTrackTintColor='rgb(252, 228, 149)'
                 />
                 <View style={styles.textCon}>
-                    <Text style={styles.colorYellow}>
-                        {this.state.distance}
-                    </Text>
                     <TouchableHighlight  onPress={() => this.props.navigation.navigate('Home')} style={styles.EmoticonBtn} activeOpacity={1}>
                     <Text style={{ overflow:'hidden',color:"#FFF" }}>Emotie bevestigen</Text>
                     </TouchableHighlight>
@@ -62,6 +106,12 @@ export default class SliderScreen extends React.Component {
       alignItems: 'center',
       justifyContent: 'center',
       marginTop: 30,
+    },
+    titleEmo:{
+      textAlign: 'center',
+      marginTop: 30,
+      fontWeight: 'bold',
+      fontSize: 20,
     }
   });
   
