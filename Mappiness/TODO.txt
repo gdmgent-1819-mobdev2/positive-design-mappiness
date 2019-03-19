@@ -4,7 +4,7 @@ Mappiness to do list
 DONE other users' markers // jonas
 DONE styling of markers (icons)
 TODO Marker click => meet or chat option field // nick
-TODO Slider with emotion => via react native elements components! // jonas
+DONE Slider with emotion => via react native elements components! // jonas
 
 #Loginscreen STYLING DONE
 DONE firebase auth
