@@ -58,7 +58,7 @@ export default class SliderScreen extends React.Component {
           firebase.database().ref("users/" + uid).child('emotie').push(info)
         }
      
-      //this.props.navigation.navigate('Home')
+      this.props.navigation.navigate('Home')
     }
     
     render() {

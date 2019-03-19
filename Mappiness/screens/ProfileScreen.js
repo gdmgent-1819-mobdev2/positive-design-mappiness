@@ -96,11 +96,6 @@ export default class ProfileScreen extends React.Component {
                 </Text>
             </View>
             <View style={styles.profileButtons}>
-                <TouchableHighlight  style={styles.button} onPress={() => this.props.navigation.navigate('ProfileEdit')} activeOpacity={1}>
-                  <Text style={styles.textButton}>
-                      EDIT
-                  </Text>
-                </TouchableHighlight>
                 <TouchableHighlight  style={styles.button} onPress={this.logout} activeOpacity={1}>
                   <Text style={styles.textButton}>
                   LOGOUT

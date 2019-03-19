@@ -23,7 +23,6 @@ const AppNavigator = StackNavigator(
     Slider: SliderScreen,
     Chat: ChatScreen,
     Profile: ProfileScreen
-    ProfileEdit: ProfileEdit
   }
 );
 
