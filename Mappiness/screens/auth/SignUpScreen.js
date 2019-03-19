@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput,Input, Button, Alert,Image,TouchableHighlight } from 'react-native';
 import * as firebase from 'firebase';
+import {AsyncStorage} from 'react-native';
 
 import { LinearGradient } from 'expo';
 export const red = '#FFE308'
@@ -22,14 +23,9 @@ export default class SignUpScreen extends React.Component {
             phoneNumber: "",
          };
     }
-    _storeData = async () => {
-        try {
-            await AsyncStorage.setItem('loggedin', true);
-        } catch (error) {
-          // Error saving data
-        }
-      };
-    onSignUpPress = () => {
+    onSignUpPress = async () => {
+      await AsyncStorage.setItem('loggedin', 'hai');
+
         /*
         if(this.state.password !== this.state.passwordConfirm) {
             Alert.alert("Passwords do not match!")  

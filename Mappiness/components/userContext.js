@@ -23,6 +23,7 @@ export class AppProvider extends React.Component {
         firebase.database().ref("users/" + userid).on("value", function(snapshot) {
         let personData = snapshot.val();
         this.setPersonData(personData);
+        console.log(personData)
       }.bind(this), function(error) { });
     }
   
