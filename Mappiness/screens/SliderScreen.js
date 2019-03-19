@@ -54,7 +54,7 @@ export default class SliderScreen extends React.Component {
                       height: 150,
                       }}
                     />
-                    <Text style={styles.titleEmo}>gefrustreerd</Text>
+                    <Text style={styles.titleEmo}>Gefrustreerd</Text>
                   </View>
                 )}
                 {this.state.distance == 4 && (
