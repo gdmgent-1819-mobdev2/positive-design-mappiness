@@ -22,6 +22,44 @@ export default class SliderScreen extends React.Component {
         maxDistance: 4
         }   
     }
+    onEmoteSubmit = () => {
+      const keuze = this.state.distance;
+        if(keuze == 1){
+          const foto =  'Mappiness/assets/icons/emoji/happy.png'
+          const info = {
+            keuze,
+            foto,
+          }
+          const uid = firebase.auth().currentUser.uid
+          firebase.database().ref("users/" + uid).child('emotie').push(info)
+        }else if(keuze == 2){
+          const foto =  'Mappiness/assets/icons/emoji/shock.png'
+          const info = {
+            keuze,
+            foto,
+          }
+          const uid = firebase.auth().currentUser.uid
+          firebase.database().ref("users/" + uid).child('emotie').push(info)
+        }else if(keuze == 3){
+          const foto =  'Mappiness/assets/icons/emoji/sad.png'
+          const info = {
+            keuze,
+            foto,
+          }
+          const uid = firebase.auth().currentUser.uid
+          firebase.database().ref("users/" + uid).child('emotie').push(info)
+        }else if(keuze == 4){
+          const foto =  'Mappiness/assets/icons/emoji/cry.png'
+          const info = {
+            keuze,
+            foto,
+          }
+          const uid = firebase.auth().currentUser.uid
+          firebase.database().ref("users/" + uid).child('emotie').push(info)
+        }
+     
+      //this.props.navigation.navigate('Home')
+    }
     
     render() {
       return (
@@ -81,7 +119,7 @@ export default class SliderScreen extends React.Component {
                     minimumTrackTintColor='rgb(252, 228, 149)'
                 />
                 <View style={styles.textCon}>
-                    <TouchableHighlight  onPress={() => this.props.navigation.navigate('Home')} style={styles.EmoticonBtn} activeOpacity={1}>
+                    <TouchableHighlight  onPress={this.onEmoteSubmit} style={styles.EmoticonBtn} activeOpacity={1}>
                     <Text style={{ overflow:'hidden',color:"#FFF" }}>Emotie bevestigen</Text>
                     </TouchableHighlight>
                 </View>
