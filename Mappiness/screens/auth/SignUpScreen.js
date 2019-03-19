@@ -60,13 +60,29 @@ export default class SignUpScreen extends React.Component {
                 Email,
                 Tel
             });
-            this.props.navigation.navigate("Home");
+        }).then(() => {
+          const registerAchievement = {
+            naam: 'Created account',
+            foto: 'Mappiness/assets/images/Achievement.png',
+          }
+          const registerAchievement2 = {
+            naam: 'Logged In',
+            foto: 'Mappiness/assets/images/Achievement.png',
+          }
+          const registerAchievement3 = {
+            naam: 'Used map view',
+            foto: 'Mappiness/assets/images/Achievement.png',
+          }
+          const userid = firebase.auth().currentUser.uid;
+          firebase.database().ref().child('users/' +userid).child('achievements').push(registerAchievement);
+          firebase.database().ref().child('users/' +userid).child('achievements').push(registerAchievement2);
+          firebase.database().ref().child('users/' +userid).child('achievements').push(registerAchievement3);
+          this.props.navigation.navigate("Home");
         });
     }
 
     onBackToLoginPress = () => {
         this.props.navigation.navigate("Login");
-
     }
 
     render() {
