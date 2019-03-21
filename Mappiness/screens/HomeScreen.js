@@ -26,11 +26,17 @@ export default class HomeScreen extends React.Component {
           latitude: 53,
           longitude: 3,
         },
+          userCoords: [
+              {
+                  latitude: 1,
+                  longitude: 2
+              }
+          ],
         isVisible: false
       }
       this._getLocationAsync();
     }
-  
+
     _getLocationAsync =  async () => {
       let { status } = await Permissions.askAsync(Permissions.LOCATION);
         if(status !== 'granted')
@@ -48,13 +54,22 @@ export default class HomeScreen extends React.Component {
         latitude: region.latitude,
         longitude: region.longitude,
         }})
-        const uid = firebase.auth().currentUser.uid;
-        firebase.database().ref(`users/${uid}/currentlocation`).set(this.state.loc);
+        // const uid = firebase.auth().currentUser.uid
+        // firebase.database().ref(`users/${uid}/currentlocation`).set(this.state.loc);
+        firebase.database().ref('users').on('value', (snapshot) => {
+            let userCoords = [];
+            snapshot.forEach((child) => {
+                const tmp = child.val()
+                userCoords.push(tmp.currentlocation)
+            })
+            this.setState({userCoords: userCoords})
+            console.log(this.state.userCoords)
+        })
     }
 
     render() {
       return (
-    <React.Fragment> 
+    <React.Fragment>
     <Overlay
   isVisible={this.state.isVisible}
   windowBackgroundColor="rgba(255, 255, 255, .5)"
@@ -66,21 +81,43 @@ export default class HomeScreen extends React.Component {
   <Text>Hello from Overlay!</Text>
 </Overlay>
         <MapView
-          initialRegion={this.state.region}
+          initialRegion={
+              // this.state.region
+              {
+                  latitude: 51.087256,
+                  longitude: 3.669007,
+                  latitudeDelta: 0.05,
+                  longitudeDelta: 0.05
+              }
+          }
           showCompass={true}
           showsUserLocation={false}
           rotateEnabled={true}
           style={{flex: 1}}
         >
-        <MapView.Marker coordinate={this.state.loc} >
-                <Image
-                    source={EmojiHappy}
-                    style={{
-                        width: 45,
-                        height: 45,
-                    }}
-                />
-        </MapView.Marker>
+            {/*<MapView.Marker coordinate={this.state.loc} >*/}
+                    {/*<Image*/}
+                        {/*source={EmojiHappy}*/}
+                        {/*style={{*/}
+                            {/*width: 45,*/}
+                            {/*height: 45,*/}
+                        {/*}}*/}
+                    {/*/>*/}
+            {/*</MapView.Marker>*/}
+            {this.state.userCoords.map((item) => {
+                return(
+                    <MapView.Marker coordinate={item}>
+                        {/*<Image*/}
+                        {/*source={EmojiHappy}*/}
+                        {/*on*/}
+                        {/*style={{*/}
+                        {/*width: 45,*/}
+                        {/*height: 45,*/}
+                        {/*}}*/}
+                        {/*/>*/}
+                    </MapView.Marker>
+                )
+            })}
         </MapView>
           <Avatar
           rounded
@@ -106,7 +143,7 @@ export default class HomeScreen extends React.Component {
           overlayContainerStyle={{backgroundColor: 'transparent'}}
           onPress={() => this.props.navigation.navigate('Slider')}
         />
-    </React.Fragment>    
+    </React.Fragment>
       );
     }
   }
@@ -141,9 +178,9 @@ export default class HomeScreen extends React.Component {
     },
     addIcon: {
       position: 'absolute',
-      left: '50%', 
-      right: '50%', 
-      bottom: 30, 
+      left: '50%',
+      right: '50%',
+      bottom: 30,
       width:60,
       height:60,
       marginLeft: -30,
@@ -153,4 +190,3 @@ export default class HomeScreen extends React.Component {
       padding: 10
     }
   });
-  
