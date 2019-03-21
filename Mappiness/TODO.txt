@@ -8,6 +8,7 @@ TODO Run in background
 TODO Chat function 
 TODO BADGES
 
+@Arvellon: Amai tis al een kort lijstje
 
 
 
