@@ -28,7 +28,8 @@ export default class LoginScreen extends React.Component {
           this.props.navigation.navigate("Home");
         }
         else{
-          
+          this.props.navigation.navigate("Login");
+
         }
       }
       onLogin = async() => {
@@ -38,6 +39,9 @@ export default class LoginScreen extends React.Component {
         firebase.auth().signInWithEmailAndPassword(username, password)
         .then(()=>{
             this.props.navigation.navigate("Home");
+        })
+        .then(() => {
+          this.props.navigation.navigate("Home");
         })
         .catch((error) => {
             // Handle Errors here.

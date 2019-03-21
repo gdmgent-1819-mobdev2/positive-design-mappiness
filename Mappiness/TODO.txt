@@ -1,44 +1,13 @@
 Mappiness to do list
 
-#Mapscreen
-DONE other users' markers // jonas
-DONE styling of markers (icons)
-TODO Marker click => meet or chat option field // nick
-TODO Slider with emotion => via react native elements components! // jonas
 
-#Loginscreen STYLING DONE
-DONE firebase auth
-DONE check if online to switch to mapscreen (for Jonas?) -> async functions written check is needed // owen
+TODO Marker click => meet or chat option field 
+TODO Hide Name
+TODO Update location when app is closed
+TODO Run in background
+TODO Chat function 
+TODO BADGES
 
-#Registerscreen STYLING DONE
-DONE add user on register
-DONE put user object with info in firebase 
-DONE parse currentUsers id
-
-#Profilescreen
-DONE avatar
-DONE Edit / logout button (styling) 
-DONE show current user info
-DONE Medals // nick => DONE!
-
------- SETTINGS----- STYLING DONE
-TODO Hide Name // jonas
-TODO Update location when app is closed // jonas
-TODO Run in background // jonas
-
-#Chatscreen
-TODO Persons list + distance //jonas
-TODO Chat function // jonas
-
-
-#TODO
-
-chat
-index.html (site) => download voor app   //owen
-scroll in app //nick => DONE
-edit screen // nick
-icons map screen => profile,Chat //nick = DONE!
-edit profile // owen
 
 
 

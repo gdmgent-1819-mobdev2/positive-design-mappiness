@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput,Input, Button, Alert,Image,TouchableHighlight } from 'react-native';
 import * as firebase from 'firebase';
+import {AsyncStorage} from 'react-native';
 
 import { LinearGradient } from 'expo';
 export const red = '#FFE308'
@@ -22,14 +23,9 @@ export default class SignUpScreen extends React.Component {
             phoneNumber: "",
          };
     }
-    _storeData = async () => {
-        try {
-            await AsyncStorage.setItem('loggedin', true);
-        } catch (error) {
-          // Error saving data
-        }
-      };
-    onSignUpPress = () => {
+    onSignUpPress = async () => {
+      await AsyncStorage.setItem('loggedin', 'hai');
+
         /*
         if(this.state.password !== this.state.passwordConfirm) {
             Alert.alert("Passwords do not match!")  
@@ -60,13 +56,29 @@ export default class SignUpScreen extends React.Component {
                 Email,
                 Tel
             });
-            this.props.navigation.navigate("Home");
+        }).then(() => {
+          const registerAchievement = {
+            naam: 'Created account',
+            foto: 'Mappiness/assets/images/Achievement.png',
+          }
+          const registerAchievement2 = {
+            naam: 'Logged In',
+            foto: 'Mappiness/assets/images/Achievement.png',
+          }
+          const registerAchievement3 = {
+            naam: 'Used map view',
+            foto: 'Mappiness/assets/images/Achievement.png',
+          }
+          const userid = firebase.auth().currentUser.uid;
+          firebase.database().ref().child('users/' +userid).child('achievements').push(registerAchievement);
+          firebase.database().ref().child('users/' +userid).child('achievements').push(registerAchievement2);
+          firebase.database().ref().child('users/' +userid).child('achievements').push(registerAchievement3);
+          this.props.navigation.navigate("Home");
         });
     }
 
     onBackToLoginPress = () => {
         this.props.navigation.navigate("Login");
-
     }
 
     render() {

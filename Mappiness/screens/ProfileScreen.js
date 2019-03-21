@@ -3,11 +3,13 @@ import { StyleSheet, View, Text,Switch, TextInput, Button, Alert,TouchableHighli
 import * as firebase from 'firebase';
 import { Avatar, Badge, Icon, withBadge,ListItem } from 'react-native-elements'
 import { AppConsumer, AppProvider } from '../components/userContext';
+import {AsyncStorage} from 'react-native';
 
 
 export default class ProfileScreen extends React.Component {
     componentDidMount() {
       this.context.watchPersonData(); 
+
     }
 
     static navigationOptions = {
@@ -40,7 +42,6 @@ export default class ProfileScreen extends React.Component {
     logout = async() => {
       await AsyncStorage.setItem('IsLoggedIn','no');
       firebase.auth().signOut();
-      Alert.alert('uitgelogd');
       this.props.navigation.navigate("Login");
     }
 
@@ -74,11 +75,6 @@ export default class ProfileScreen extends React.Component {
           avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
       
         },
-        {
-          name: 'Chris Jackson',
-          avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        
-        },
       ]
       
       return (
@@ -96,14 +92,10 @@ export default class ProfileScreen extends React.Component {
                 />
                 <Text style={{marginTop: 20,fontWeight:'bold'}}>
                   {context.personData.Naam}
+
                 </Text>
             </View>
             <View style={styles.profileButtons}>
-                <TouchableHighlight  style={styles.button} activeOpacity={1}>
-                  <Text style={styles.textButton}>
-                      EDIT
-                  </Text>
-                </TouchableHighlight>
                 <TouchableHighlight  style={styles.button} onPress={this.logout} activeOpacity={1}>
                   <Text style={styles.textButton}>
                   LOGOUT
