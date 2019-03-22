@@ -43,7 +43,7 @@ export default class HomeScreen extends React.Component {
       let { status } = await Permissions.askAsync(Permissions.LOCATION);
         if(status !== 'granted')
           console.log('Permission to access location was denied');
-      let location = await Location.getCurrentPositionAsync({enabledHighAccuracy: true})
+      let location = await Location.getCurrentPositionAsync({enabledHighAccuracy: false})
       let region = {
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
