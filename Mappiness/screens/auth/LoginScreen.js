@@ -17,12 +17,12 @@ export default class LoginScreen extends React.Component {
           username: '',
           password: '',
         };
-        this._getLocationAsync();
+        this._getLoggedIn();
       }
       static navigationOptions = {
         header: null,
       };
-      _getLocationAsync = async() => {
+      _getLoggedIn = async() => {
         const value = await AsyncStorage.getItem('IsLoggedIn');
         if(value == 'hai'){
           this.props.navigation.navigate("Home");
