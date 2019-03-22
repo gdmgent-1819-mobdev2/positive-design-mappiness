@@ -37,6 +37,8 @@ export default class HomeScreen extends React.Component {
       this._getLocationAsync();
     }
 
+
+
     _getLocationAsync =  async () => {
       let { status } = await Permissions.askAsync(Permissions.LOCATION);
         if(status !== 'granted')
@@ -54,8 +56,7 @@ export default class HomeScreen extends React.Component {
         latitude: region.latitude,
         longitude: region.longitude,
         }})
-        // const uid = firebase.auth().currentUser.uid
-        // firebase.database().ref(`users/${uid}/currentlocation`).set(this.state.loc);
+        firebase.database().ref(`users/${firebase.auth().currentUser.uid}/currentlocation`).set(this.state.loc);
         firebase.database().ref('users').on('value', (snapshot) => {
             let userCoords = [];
             snapshot.forEach((child) => {
@@ -84,8 +85,8 @@ export default class HomeScreen extends React.Component {
           initialRegion={
               // this.state.region
               {
-                  latitude: 51.087256,
-                  longitude: 3.669007,
+                  latitude: 37.785834,
+                  longitude: -122.406417,
                   latitudeDelta: 0.05,
                   longitudeDelta: 0.05
               }
@@ -95,26 +96,26 @@ export default class HomeScreen extends React.Component {
           rotateEnabled={true}
           style={{flex: 1}}
         >
-            {/*<MapView.Marker coordinate={this.state.loc} >*/}
-                    {/*<Image*/}
-                        {/*source={EmojiHappy}*/}
-                        {/*style={{*/}
-                            {/*width: 45,*/}
-                            {/*height: 45,*/}
-                        {/*}}*/}
-                    {/*/>*/}
-            {/*</MapView.Marker>*/}
-            {this.state.userCoords.map((item) => {
+            <MapView.Marker coordinate={this.state.loc} >
+                    <Image
+                        source={EmojiHappy}
+                        style={{
+                            width: 45,
+                            height: 45,
+                        }}
+                    />
+            </MapView.Marker>
+            {this.state.userCoords.map((item, i) => {
                 return(
-                    <MapView.Marker coordinate={item}>
-                        {/*<Image*/}
-                        {/*source={EmojiHappy}*/}
-                        {/*on*/}
-                        {/*style={{*/}
-                        {/*width: 45,*/}
-                        {/*height: 45,*/}
-                        {/*}}*/}
-                        {/*/>*/}
+                    <MapView.Marker key={i} coordinate={item}>
+                        <Image
+                        source={EmojiHappy}
+                        on
+                        style={{
+                        width: 45,
+                        height: 45,
+                        }}
+                        />
                     </MapView.Marker>
                 )
             })}
