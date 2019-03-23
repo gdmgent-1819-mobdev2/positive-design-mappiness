@@ -5,7 +5,8 @@ TODO Marker click => meet or chat option field
 TODO Hide Name
 TODO Update location when app is closed
 TODO Run in background
-TODO Chat function 
+TODO Chat function
+TODO Signup Scrollable maken
 TODO BADGES
 
 @Arvellon: Amai tis al een kort lijstje

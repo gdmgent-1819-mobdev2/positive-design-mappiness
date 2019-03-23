@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, FlatList, ActivityIndicator, Alert, Image } from 'react-native';
 import * as firebase from 'firebase';
 import { Avatar,Overlay } from 'react-native-elements';
-import { LinearGradient } from 'expo';
 import Firebase from '../base';
 import { MapView, Permissions, Location } from 'expo';
+
 const EmojiHappy = require('../assets/icons/emoji/happy.png');
 const listIcon = require('../assets/icons/list.png');
 const plusIcon = require('../assets/icons/plus.png');
@@ -12,12 +12,8 @@ const plusIcon = require('../assets/icons/plus.png');
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Home',
+        header: null,
     };
-
-    static navigationOptions = {
-      header: null,
-    };
-
     constructor(props){
       super(props);
       this.state = {
@@ -34,15 +30,18 @@ export default class HomeScreen extends React.Component {
           ],
         isVisible: false
       }
-      this._getLocationAsync();
+      this._getLocationAsync()
     }
 
-
+    presser(){
+        console.log('YEEEEY');
+    }
 
     _getLocationAsync =  async () => {
       let { status } = await Permissions.askAsync(Permissions.LOCATION);
         if(status !== 'granted')
           console.log('Permission to access location was denied');
+          // High accuracy is disabled to only get an estimated user location for privacy
       let location = await Location.getCurrentPositionAsync({enabledHighAccuracy: false})
       let region = {
         latitude: location.coords.latitude,
@@ -56,8 +55,8 @@ export default class HomeScreen extends React.Component {
         latitude: region.latitude,
         longitude: region.longitude,
         }})
-        firebase.database().ref(`users/${firebase.auth().currentUser.uid}/currentlocation`).set(this.state.loc);
-        firebase.database().ref('users').on('value', (snapshot) => {
+        Firebase.database().ref(`users/${Firebase.auth().currentUser.uid}/currentlocation`).set(this.state.loc);
+        Firebase.database().ref('users').on('value', (snapshot) => {
             let userCoords = [];
             snapshot.forEach((child) => {
                 const tmp = child.val()
@@ -83,34 +82,33 @@ export default class HomeScreen extends React.Component {
 </Overlay>
         <MapView
           initialRegion={
-              // this.state.region
-              {
-                  latitude: 37.785834,
-                  longitude: -122.406417,
-                  latitudeDelta: 0.05,
-                  longitudeDelta: 0.05
-              }
+              this.state.region
+              // {
+              //     latitude: 37.785834,
+              //     longitude: -122.406417,
+              //     latitudeDelta: 0.05,
+              //     longitudeDelta: 0.05
+              // }
           }
           showCompass={true}
           showsUserLocation={false}
           rotateEnabled={true}
           style={{flex: 1}}
         >
-            <MapView.Marker coordinate={this.state.loc} >
-                    <Image
-                        source={EmojiHappy}
-                        style={{
-                            width: 45,
-                            height: 45,
-                        }}
-                    />
-            </MapView.Marker>
+            {/*<MapView.Marker coordinate={this.state.loc} >*/}
+                    {/*<Image*/}
+                        {/*source={EmojiHappy}*/}
+                        {/*style={{*/}
+                            {/*width: 45,*/}
+                            {/*height: 45,*/}
+                        {/*}}*/}
+                    {/*/>*/}
+            {/*</MapView.Marker>*/}
             {this.state.userCoords.map((item, i) => {
                 return(
-                    <MapView.Marker key={i} coordinate={item}>
+                    <MapView.Marker key={i} coordinate={item} onPress={this.presser}>
                         <Image
                         source={EmojiHappy}
-                        on
                         style={{
                         width: 45,
                         height: 45,
