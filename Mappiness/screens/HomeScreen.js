@@ -66,7 +66,7 @@ export default class HomeScreen extends React.Component {
                 userCoords.push(tmp.currentlocation)
             })
             this.setState({userCoords: userCoords})
-            console.log(this.state.userCoords)
+            // console.log(this.state.userCoords)
         })
     }
 
