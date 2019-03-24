@@ -28,14 +28,17 @@ export default class HomeScreen extends React.Component {
                   longitude: 2
               }
           ],
-        isVisible: false
+          loc: {
+            latitude: 1,
+            longitude: 1
+          },
+        isVisible: false,
+        showText: false
       }
       this._getLocationAsync()
     }
 
-    presser(){
-        console.log('YEEEEY');
-    }
+
 
     _getLocationAsync =  async () => {
       let { status } = await Permissions.askAsync(Permissions.LOCATION);
@@ -95,18 +98,18 @@ export default class HomeScreen extends React.Component {
           rotateEnabled={true}
           style={{flex: 1}}
         >
-            {/*<MapView.Marker coordinate={this.state.loc} >*/}
-                    {/*<Image*/}
-                        {/*source={EmojiHappy}*/}
-                        {/*style={{*/}
-                            {/*width: 45,*/}
-                            {/*height: 45,*/}
-                        {/*}}*/}
-                    {/*/>*/}
-            {/*</MapView.Marker>*/}
+            <MapView.Marker coordinate={this.state.loc} >
+                    <Image
+                        source={EmojiHappy}
+                        style={{
+                            width: 45,
+                            height: 45,
+                        }}
+                    />
+            </MapView.Marker>
             {this.state.userCoords.map((item, i) => {
                 return(
-                    <MapView.Marker key={i} coordinate={item} onPress={this.presser}>
+                    <MapView.Marker key={i} coordinate={item} >
                         <Image
                         source={EmojiHappy}
                         style={{
@@ -118,7 +121,8 @@ export default class HomeScreen extends React.Component {
                 )
             })}
         </MapView>
-          <Avatar
+        {this.state.showText && <Text>testcabipibyvzhiblzev</Text>}
+        <Avatar
           rounded
           source={{uri: "https://credly.com/web/addons/shared_addons/themes/credly/img/avatar_default_large.png"}}
           activeOpacity={0.2}
